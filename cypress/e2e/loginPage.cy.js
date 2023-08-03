@@ -33,6 +33,7 @@ describe('Verify Browser Stack Home Page', () => {
             .click();
 
         cy.url().should('contain', 'practicetestautomation.com/logged-in-successfully/');
+        
         cy.get("h1").first()
             .should('be.exist')
             .should('have.text', 'Logged In Successfully');
