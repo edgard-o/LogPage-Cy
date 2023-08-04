@@ -2,7 +2,7 @@ const locators = {
     logo: "#site-title > a > img",
     username: "#username",
     password: "#password",
-    subimitButton: "#submit"
+    submitButton: "#submit"
 }
 
 module.exports = locators;

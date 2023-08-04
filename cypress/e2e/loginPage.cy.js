@@ -11,7 +11,7 @@ describe('Verify Browser Stack Home Page', () => {
     })
 
 
-    it('Verify logo is visible, h2 exist and login funcitonality', () => {
+    it('Verify logo is visible, h2 exist and login functionality', () => {
         cy.get(locators.logo).should('be.visible');
 
         cy.get('h2').first().should('be.exist');
@@ -26,7 +26,7 @@ describe('Verify Browser Stack Home Page', () => {
             .clear()
             .type(Cypress.env('password'), { log: false });
 
-        cy.get(locators.subimitButton).should('be.exist')
+        cy.get(locators.submitButton).should('be.exist')
             .click();
 
         cy.url().should('contain', Cypress.env("baseUrl") + '/logged-in-successfully/');
