@@ -35,4 +35,40 @@ describe('Verify Browser Stack Home Page', () => {
             .should('be.exist')
             .should('have.text', 'Logged In Successfully');
     })
+
+    it("Negative Login Test", () => {
+        cy.get(locators.username).should('be.visible')
+            .click()
+            .clear()
+            .type('incorrectUser');
+
+        cy.get(locators.password).should('be.visible')
+            .click()
+            .clear()
+            .type(Cypress.env('password'), { log: false });
+
+        cy.get(locators.submitButton).should('be.visible')
+            .click();
+
+        cy.get(locators.errorMessage).should('be.exist')
+            .should('contain', "Your username is invalid!");
+    })
+
+    it("Negative password test", () => {
+        cy.get(locators.username).should('be.visible')
+            .click()
+            .clear()
+            .type(Cypress.env('username'));
+
+        cy.get(locators.password).should('be.visible')
+            .click()
+            .clear()
+            .type('incorrectPassword', { log: false });
+
+        cy.get(locators.submitButton).should('be.visible')
+            .click();
+
+        cy.get(locators.errorMessage).should('be.exist')
+            .should('contain', 'Your password is invalid!');
+    })
 })
