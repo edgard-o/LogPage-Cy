@@ -6,7 +6,12 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
-  projectId: "61yjrx"
+  projectId: "61yjrx",
+  env: {
+    baseUrl: "https://practicetestautomation.com",
+    username:"student",
+    password:"Password123"
+  }
 });
 
 

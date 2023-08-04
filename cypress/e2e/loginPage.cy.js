@@ -1,3 +1,5 @@
+import locators from "../Pages/loginPage.cy";
+
 describe('Verify Browser Stack Home Page', () => {
     before(() => {
         Cypress.config('defaultCommandTimeout', 4000)
@@ -5,38 +7,32 @@ describe('Verify Browser Stack Home Page', () => {
     })
 
     beforeEach(() => {
-        cy.visit('https://practicetestautomation.com/practice-test-login/');
+        cy.visit(Cypress.env("baseUrl") + '/practice-test-login/');
     })
 
 
-    it('Verify logo is visible', () => {
-        cy.get('#site-title > a > img').should('be.visible');
-    })
+    it('Verify logo is visible, h2 exist and login funcitonality', () => {
+        cy.get(locators.logo).should('be.visible');
 
-    it('Verify Header is present', () => {
         cy.get('h2').first().should('be.exist');
-    })
 
-    it('Verify Product menu are present', () => {
-
-        cy.get('#username').should('be.exist')
+        cy.get(locators.username).should('be.exist')
             .click()
             .clear()
-            .type('student');
+            .type(Cypress.env('username'));
 
-        cy.get('#password').should('be.exist')
+        cy.get(locators.password).should('be.exist')
             .click()
             .clear()
-            .type('Password123');
+            .type(Cypress.env('password'), { log: false });
 
-        cy.get('#submit').should('be.exist')
+        cy.get(locators.subimitButton).should('be.exist')
             .click();
 
-        cy.url().should('contain', 'practicetestautomation.com/logged-in-successfully/');
-        
+        cy.url().should('contain', Cypress.env("baseUrl") + '/logged-in-successfully/');
+
         cy.get("h1").first()
             .should('be.exist')
             .should('have.text', 'Logged In Successfully');
     })
-
 })
