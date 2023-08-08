@@ -7,11 +7,11 @@ describe('Remove all undesirable email from promotion and social tab', () => {
     
     it('Test', () => {
 
-        cy.get('#identifierId').should('be.visible').click().type('edgard.ohnishi@gmail.com');
+        cy.get('#identifierId').should('be.visible').click().type('');
         
         cy.get('#identifierNext > div > button > div').should('be.visble').click();
        
-        cy.get('#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input').click().type('402155122')
+        cy.get('#password > div.aCsJod.oJeWuf > div > div.Xb9hP > input').click().type('')
 
         cy.get('#\:1t').click().should('have.class','aAy aJi-aLe J-KU-JO J-KU-KO')
         cy.get('#\:1y > div.J-J5-Ji.J-JN-M-I-Jm > span').click();
